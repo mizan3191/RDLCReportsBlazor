@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Reports\EmployeeDetails.rdlc" />
+    <Content Remove="wwwroot\Reports\EmployeeReports.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ReportsDataSet\DataSetEmpolyee.xsc" />
+    <None Remove="ReportsDataSet\DataSetEmpolyee.xss" />
+    <None Remove="ReportsDataSet\DSEmployeeDetails.xsc" />
+    <None Remove="ReportsDataSet\DSEmployeeDetails.xss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ReportsDataSet\DataSetEmpolyee.xsc" />
+    <Content Include="ReportsDataSet\DataSetEmpolyee.xss" />
+    <Content Include="ReportsDataSet\DSEmployeeDetails.xsc" />
+    <Content Include="ReportsDataSet\DSEmployeeDetails.xss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\Reports\EmployeeDetails.rdlc" />
+    <EmbeddedResource Include="wwwroot\Reports\EmployeeReports.rdlc" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
+		<PackageReference Include="System.CodeDom" Version="8.0.0" />
+		<PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+		<PackageReference Include="System.Security.Permissions" Version="8.0.0" />
+		<PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+		<PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="ReportsDataSet\DataSetEmpolyee.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>DataSetEmpolyee.xsd</DependentUpon>
+	  </Compile>
+	  <Compile Update="ReportsDataSet\DSEmployeeDetails.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>DSEmployeeDetails.xsd</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="ReportsDataSet\DataSetEmpolyee.xsd">
+	    <SubType>Designer</SubType>
+	    <LastGenOutput>DataSetEmpolyee.Designer.cs</LastGenOutput>
+	    <Generator>MSDataSetGenerator</Generator>
+	  </None>
+	  <None Update="ReportsDataSet\DSEmployeeDetails.xsd">
+	    <SubType>Designer</SubType>
+	    <LastGenOutput>DSEmployeeDetails.Designer.cs</LastGenOutput>
+	    <Generator>MSDataSetGenerator</Generator>
+	  </None>
+	</ItemGroup>
+
+</Project>
