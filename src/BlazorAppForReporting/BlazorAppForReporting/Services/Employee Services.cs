@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 
 namespace BlazorAppForReporting.Services
 {
@@ -51,7 +50,7 @@ namespace BlazorAppForReporting.Services
 
             DataRow dataRow;
 
-            for (int i = 1; i <= 50; i++)
+            for (int i = 1; i <= 1000; i++)
             {
                 Random rnd = new Random();
                 int randomNumber = rnd.Next(10000000, 100000000);
@@ -68,6 +67,27 @@ namespace BlazorAppForReporting.Services
             return dt;
         }
 
+        public DataTable GetStudent()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Role");
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Department");
+
+            DataRow dataRow;
+
+            dataRow = dt.NewRow();
+            dataRow["Role"] = "001";
+            dataRow["Name"] = "Mizna" ;
+            dataRow["Department"] = "CSE";
+
+            dt.Rows.Add(dataRow);
+
+            return dt;
+        }
+
+
+
         public DataTable SetEmployeeById(Employee employee)
         {
             DataTable dt = new DataTable();
@@ -79,6 +99,28 @@ namespace BlazorAppForReporting.Services
             DataRow dataRow = dt.NewRow();
 
             dataRow["Id"] = employee.Id;
+            dataRow["Name"] = employee.Name;
+            dataRow["Designation"] = employee.Designation;
+            dataRow["Phone"] = employee.Phone;
+
+            dt.Rows.Add(dataRow);
+
+            return dt;
+        }
+
+        public DataTable SetEmployee(MyEmployees employee)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Id");
+            dt.Columns.Add("EmpId");
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Designation");
+            dt.Columns.Add("Phone");
+
+            DataRow dataRow = dt.NewRow();
+
+            dataRow["Id"] = 1;
+            dataRow["EmpId"] = employee.EmpId;
             dataRow["Name"] = employee.Name;
             dataRow["Designation"] = employee.Designation;
             dataRow["Phone"] = employee.Phone;

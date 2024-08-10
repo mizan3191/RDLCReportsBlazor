@@ -152,6 +152,17 @@
     <Content Include="DataSet\DataSetEmpolyee.xsc">
       <DependentUpon>DataSetEmpolyee.xsd</DependentUpon>
     </Content>
+    <Content Include="DataSet\DataSetEmployeeDetailsPrint.xsc">
+      <DependentUpon>DataSetEmployeeDetailsPrint.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSet\DataSetEmployeeDetailsPrint.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetEmployeeDetailsPrint.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSet\DataSetEmployeeDetailsPrint.xss">
+      <DependentUpon>DataSetEmployeeDetailsPrint.xsd</DependentUpon>
+    </Content>
     <None Include="DataSet\DataSetEmpolyee.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -162,6 +173,17 @@
     </Content>
     <Content Include="DataSet\DSEmployeeDetails.xsc">
       <DependentUpon>DSEmployeeDetails.xsd</DependentUpon>
+    </Content>
+    <Content Include="DataSet\DataSetStudent.xsc">
+      <DependentUpon>DataSetStudent.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSet\DataSetStudent.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetStudent.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSet\DataSetStudent.xss">
+      <DependentUpon>DataSetStudent.xsd</DependentUpon>
     </Content>
     <None Include="DataSet\DSEmployeeDetails.xsd">
       <SubType>Designer</SubType>
@@ -221,10 +243,20 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DataSetEmployeeDetailsPrint.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetEmployeeDetailsPrint.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DataSetEmpolyee.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetEmpolyee.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DataSetStudent.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetStudent.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DSEmployeeDetails.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -280,8 +312,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="ReportFiles\Employee.rdlc" />
     <EmbeddedResource Include="ReportFiles\EmployeeDetails.rdlc" />
+    <EmbeddedResource Include="ReportFiles\EmployeeDetailsPrint.rdlc" />
     <EmbeddedResource Include="ReportFiles\EmployeeReports.rdlc" />
+    <EmbeddedResource Include="ReportFiles\Student.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

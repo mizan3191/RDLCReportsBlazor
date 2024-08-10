@@ -19,26 +19,36 @@ namespace BlazorAppForReporting.Controllers
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
-        [HttpPost("EmployeePrintDetails")]
-        public IActionResult EmployeePrint(Employee employee)
+        [HttpPost("EmployeeDetailsPrint")]
+        public IActionResult EmployeeDetailsPrint(MyEmployees employee)
         {
-            var dt = new DataTable();
-            dt = _employee_Services.SetEmployeeById(employee);
+            var dt = _employee_Services.SetEmployee(employee);
 
             string mimetype = "";
             int extension = 1;
 
-            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\EmployeeDetails.rdlc";
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\EmployeeDetailsPrint.rdlc";
 
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters.Add("ReportParameter", "Employee Details.");
+            Dictionary<string, string> parameters = new Dictionary<string, string>
+    {
+        { "ReportParameterEmployeeDetailsPrint", $"{employee.Name}" }
+    };
 
             LocalReport localReport = new LocalReport(path);
-            localReport.AddDataSource("DSEmployeeDetails", dt);
+            localReport.AddDataSource("DataSetEmployeeDetailsPrint", dt);
             var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimetype);
-            return File(result.MainStream, "application/pdf");
+
+            // Save the PDF to a temporary location
+            var tempFileName = $"{Guid.NewGuid()}.pdf";
+            var tempFilePath = Path.Combine(Path.GetTempPath(), tempFileName);
+            System.IO.File.WriteAllBytes(tempFilePath, result.MainStream);
+
+            // Return the URL to the PDF file
+            var fileUrl = Url.Content($"~/temp/{tempFileName}");
+            return Ok(fileUrl);
         }
-        
+
+
         [HttpGet("EmployeeList")]
         public IActionResult EmployeeList()
         {
@@ -64,6 +74,46 @@ namespace BlazorAppForReporting.Controllers
 
             LocalReport localReport = new LocalReport(path);
             localReport.AddDataSource("DataSetEmpolyee", dt);
+            var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimetype);
+            return File(result.MainStream, "application/pdf");
+        }
+
+        [HttpGet("student")]
+        public IActionResult PrintStudent()
+        {
+            var dt = new DataTable();
+            dt = _employee_Services.GetStudent();
+
+            string mimetype = "";
+            int extension = 1;
+
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\Student.rdlc";
+
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("ReportParameterStudent", "Student Details");
+
+            LocalReport localReport = new LocalReport(path);
+            localReport.AddDataSource("DataSetStudent", dt);
+            var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimetype);
+            return File(result.MainStream, "application/pdf");
+        }
+
+        [HttpPost("EmployeePrintDetails")]
+        public IActionResult EmployeePrint(Employee employee)
+        {
+            var dt = new DataTable();
+            dt = _employee_Services.SetEmployeeById(employee);
+
+            string mimetype = "";
+            int extension = 1;
+
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\EmployeeDetails.rdlc";
+
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("ReportParameter", "Employee Details.");
+
+            LocalReport localReport = new LocalReport(path);
+            localReport.AddDataSource("DSEmployeeDetails", dt);
             var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimetype);
             return File(result.MainStream, "application/pdf");
         }

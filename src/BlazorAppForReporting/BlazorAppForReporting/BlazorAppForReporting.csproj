@@ -7,27 +7,41 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Reports\DataSetEmployeeDetailsPrint.Designer.cs" />
+    <Content Remove="wwwroot\Reports\DataSetEmployeeDetailsPrint.xsd" />
+    <Content Remove="wwwroot\Reports\Employee.rdlc" />
     <Content Remove="wwwroot\Reports\EmployeeDetails.rdlc" />
+    <Content Remove="wwwroot\Reports\EmployeeDetailsPrint.rdlc" />
     <Content Remove="wwwroot\Reports\EmployeeReports.rdlc" />
+    <Content Remove="wwwroot\Reports\Student.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ReportsDataSet\DataSetEmpolyee.xsc" />
     <None Remove="ReportsDataSet\DataSetEmpolyee.xss" />
+    <None Remove="ReportsDataSet\DataSetStudent.xsc" />
+    <None Remove="ReportsDataSet\DataSetStudent.xss" />
     <None Remove="ReportsDataSet\DSEmployeeDetails.xsc" />
     <None Remove="ReportsDataSet\DSEmployeeDetails.xss" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="ReportsDataSet\DataSetEmployeeDetailsPrint.xsc" />
+    <Content Include="ReportsDataSet\DataSetEmployeeDetailsPrint.xss" />
     <Content Include="ReportsDataSet\DataSetEmpolyee.xsc" />
     <Content Include="ReportsDataSet\DataSetEmpolyee.xss" />
+    <Content Include="ReportsDataSet\DataSetStudent.xsc" />
+    <Content Include="ReportsDataSet\DataSetStudent.xss" />
     <Content Include="ReportsDataSet\DSEmployeeDetails.xsc" />
     <Content Include="ReportsDataSet\DSEmployeeDetails.xss" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="wwwroot\Reports\Employee.rdlc" />
     <EmbeddedResource Include="wwwroot\Reports\EmployeeDetails.rdlc" />
+    <EmbeddedResource Include="wwwroot\Reports\EmployeeDetailsPrint.rdlc" />
     <EmbeddedResource Include="wwwroot\Reports\EmployeeReports.rdlc" />
+    <EmbeddedResource Include="wwwroot\Reports\Student.rdlc" />
   </ItemGroup>
 
 	<ItemGroup>
@@ -40,10 +54,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="ReportsDataSet\DataSetEmployeeDetailsPrint.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>DataSetEmployeeDetailsPrint.xsd</DependentUpon>
+	  </Compile>
 	  <Compile Update="ReportsDataSet\DataSetEmpolyee.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>DataSetEmpolyee.xsd</DependentUpon>
+	  </Compile>
+	  <Compile Update="ReportsDataSet\DataSetStudent.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>DataSetStudent.xsd</DependentUpon>
 	  </Compile>
 	  <Compile Update="ReportsDataSet\DSEmployeeDetails.Designer.cs">
 	    <DesignTime>True</DesignTime>
@@ -53,9 +77,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Update="ReportsDataSet\DataSetEmployeeDetailsPrint.xsd">
+	    <SubType>Designer</SubType>
+	    <LastGenOutput>DataSetEmployeeDetailsPrint.Designer.cs</LastGenOutput>
+	    <Generator>MSDataSetGenerator</Generator>
+	  </None>
 	  <None Update="ReportsDataSet\DataSetEmpolyee.xsd">
 	    <SubType>Designer</SubType>
 	    <LastGenOutput>DataSetEmpolyee.Designer.cs</LastGenOutput>
+	    <Generator>MSDataSetGenerator</Generator>
+	  </None>
+	  <None Update="ReportsDataSet\DataSetStudent.xsd">
+	    <SubType>Designer</SubType>
+	    <LastGenOutput>DataSetStudent.Designer.cs</LastGenOutput>
 	    <Generator>MSDataSetGenerator</Generator>
 	  </None>
 	  <None Update="ReportsDataSet\DSEmployeeDetails.xsd">
