@@ -279,7 +279,7 @@ namespace BlazorAppForReporting.ReportsDataSet {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataSetEmpolyeeDataTable : global::System.Data.TypedTableBase<DataSetEmpolyeeRow> {
             
-            private global::System.Data.DataColumn columnId;
+            private global::System.Data.DataColumn columnEmpId;
             
             private global::System.Data.DataColumn columnName;
             
@@ -322,9 +322,9 @@ namespace BlazorAppForReporting.ReportsDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
+            public global::System.Data.DataColumn EmpIdColumn {
                 get {
-                    return this.columnId;
+                    return this.columnEmpId;
                 }
             }
             
@@ -389,10 +389,10 @@ namespace BlazorAppForReporting.ReportsDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataSetEmpolyeeRow AddDataSetEmpolyeeRow(string Id, string Name, string Designation, string Phone) {
+            public DataSetEmpolyeeRow AddDataSetEmpolyeeRow(string EmpId, string Name, string Designation, string Phone) {
                 DataSetEmpolyeeRow rowDataSetEmpolyeeRow = ((DataSetEmpolyeeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Id,
+                        EmpId,
                         Name,
                         Designation,
                         Phone};
@@ -418,7 +418,7 @@ namespace BlazorAppForReporting.ReportsDataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnId = base.Columns["Id"];
+                this.columnEmpId = base.Columns["EmpId"];
                 this.columnName = base.Columns["Name"];
                 this.columnDesignation = base.Columns["Designation"];
                 this.columnPhone = base.Columns["Phone"];
@@ -427,8 +427,8 @@ namespace BlazorAppForReporting.ReportsDataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
+                this.columnEmpId = new global::System.Data.DataColumn("EmpId", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmpId);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.columnDesignation = new global::System.Data.DataColumn("Designation", typeof(string), null, global::System.Data.MappingType.Element);
@@ -579,17 +579,17 @@ namespace BlazorAppForReporting.ReportsDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Id {
+            public string EmpId {
                 get {
                     try {
-                        return ((string)(this[this.tableDataSetEmpolyee.IdColumn]));
+                        return ((string)(this[this.tableDataSetEmpolyee.EmpIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Id\' in table \'DataSetEmpolyee\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EmpId\' in table \'DataSetEmpolyee\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataSetEmpolyee.IdColumn] = value;
+                    this[this.tableDataSetEmpolyee.EmpIdColumn] = value;
                 }
             }
             
@@ -643,14 +643,14 @@ namespace BlazorAppForReporting.ReportsDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsIdNull() {
-                return this.IsNull(this.tableDataSetEmpolyee.IdColumn);
+            public bool IsEmpIdNull() {
+                return this.IsNull(this.tableDataSetEmpolyee.EmpIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetIdNull() {
-                this[this.tableDataSetEmpolyee.IdColumn] = global::System.Convert.DBNull;
+            public void SetEmpIdNull() {
+                this[this.tableDataSetEmpolyee.EmpIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

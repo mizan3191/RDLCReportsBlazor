@@ -6,6 +6,8 @@
 @using System.Threading.Tasks
 @using System.Collections.Generic
 
+@inject IJSRuntime JSRuntime
+
 @rendermode InteractiveServer
 
 <h3>Employees</h3>
@@ -30,12 +32,12 @@ else
             @foreach (var employee in employees)
             {
                 <tr>
-                    <td>@employee.Id</td>
+                    <td>@employee.EmpId</td>
                     <td>@employee.Name</td>
                     <td>@employee.Designation</td>
                     <td>@employee.Phone</td>
                     <td>
-                        <button class="btn btn-warning" target="_blank" @onclick="() => PrintEmployee(employee.Id)">Print</button>
+                        <a class="btn btn-warning" href="http://localhost:27438/api/Employees/EmployeeDetails/@employee.EmpId" target="_blank">Print</a>
                     </td>
                 </tr>
             }
@@ -43,11 +45,14 @@ else
     </table>
 }
 
+
 @code {
     private List<Employee> employees;
 
     [Inject]
     private HttpClient Http { get; set; }
+
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -59,19 +64,6 @@ else
         try
         {
             employees = await Http.GetFromJsonAsync<List<Employee>>("Employees/EmployeeList");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
-        }
-    }
-
-    private async Task PrintEmployee(string employeeId)
-    {
-        try
-        {
-            Employee employee = employees.FirstOrDefault(x => x.Id == employeeId);
-            await Http.PostAsJsonAsync("Employees/EmployeePrintDetails", employee);
         }
         catch (Exception ex)
         {

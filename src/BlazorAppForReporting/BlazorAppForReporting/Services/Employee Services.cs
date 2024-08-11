@@ -1,16 +1,15 @@
-﻿using System.Data;
+﻿using BlazorAppForReporting.Components.Pages;
+using System.Data;
 
 namespace BlazorAppForReporting.Services
 {
     public class Employee
     {
-        public string Id { get; set; }
+        public string EmpId { get; set; }
         public string Name { get; set; }
         public string Designation { get; set; }
         public string Phone { get; set; }
     }
-
-
 
     public class Employee_Services
     {
@@ -26,7 +25,7 @@ namespace BlazorAppForReporting.Services
 
                 Employee employee = new Employee
                 {
-                    Id = i.ToString(),
+                    EmpId = "Emp0" + i.ToString(),
                     Name = "Miznaur-" + i,
                     Designation = "Developer-" + i,
                     Phone = "+8019-" + randomNumber.ToString()
@@ -38,7 +37,27 @@ namespace BlazorAppForReporting.Services
             return employees;
         }
 
+        public DataTable PrintStudentById(string empId)
+        {
+            var list = GetEmployeeList();
+            var employee = list.FirstOrDefault(x => x.EmpId == empId);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("EmpId");
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Designation");
+            dt.Columns.Add("Phone");
 
+            DataRow dataRow = dt.NewRow();
+
+            dataRow["EmpId"] = employee.EmpId;
+            dataRow["Name"] = employee.Name;
+            dataRow["Designation"] = employee.Designation;
+            dataRow["Phone"] = employee.Phone;
+
+            dt.Rows.Add(dataRow);
+
+            return dt;
+        }
 
         public DataTable GetEmployee()
         {
@@ -80,50 +99,6 @@ namespace BlazorAppForReporting.Services
             dataRow["Role"] = "001";
             dataRow["Name"] = "Mizna" ;
             dataRow["Department"] = "CSE";
-
-            dt.Rows.Add(dataRow);
-
-            return dt;
-        }
-
-
-
-        public DataTable SetEmployeeById(Employee employee)
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Id");
-            dt.Columns.Add("Name");
-            dt.Columns.Add("Designation");
-            dt.Columns.Add("Phone");
-
-            DataRow dataRow = dt.NewRow();
-
-            dataRow["Id"] = employee.Id;
-            dataRow["Name"] = employee.Name;
-            dataRow["Designation"] = employee.Designation;
-            dataRow["Phone"] = employee.Phone;
-
-            dt.Rows.Add(dataRow);
-
-            return dt;
-        }
-
-        public DataTable SetEmployee(MyEmployees employee)
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Id");
-            dt.Columns.Add("EmpId");
-            dt.Columns.Add("Name");
-            dt.Columns.Add("Designation");
-            dt.Columns.Add("Phone");
-
-            DataRow dataRow = dt.NewRow();
-
-            dataRow["Id"] = 1;
-            dataRow["EmpId"] = employee.EmpId;
-            dataRow["Name"] = employee.Name;
-            dataRow["Designation"] = employee.Designation;
-            dataRow["Phone"] = employee.Phone;
 
             dt.Rows.Add(dataRow);
 
